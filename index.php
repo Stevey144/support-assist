@@ -7,6 +7,7 @@ define('PASSWORD', '');
 define('DBNAME', 'admin_assistance');
 
 $link = mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME);
+$error_msg = "";
 
 
 if(isset($_POST['submit'])) {
@@ -30,11 +31,13 @@ else{
 }
 
 }
+else{
+	$error_msg = "please select the checkbox for the support you need";
+}
+
 
 if (isset($_POST['mycheck'])) {
 	# code...
-
-
 $checkings = $_POST['mycheck'];
 $ch="";
 foreach ($checkings as $checked) {
@@ -83,7 +86,7 @@ if (isset($_POST['seecheck'])) {
  <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Form</title>
+	<title>Request Page</title>
 	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">	
 
@@ -97,7 +100,7 @@ if (isset($_POST['seecheck'])) {
     var vis = (box.checked) ? "none" : "none";
     document.getElementById(it).style.display = vis;
   }
-</script>	
+</script>
 </head>
 <body>
 	<div class="container">
@@ -111,13 +114,17 @@ if (isset($_POST['seecheck'])) {
 
 		<section>
 			<article>
-			<h1>Welcome to support Assistance</h1>
+				<div class="support-pic">
+			<h1 class="intro-text">Welcome to support Assistance</h1>
+			<h1 class="intro-text">connecting you to vital support..</h1>
+			</div>
+
 			</article>
 			<aside>
-				<h1>Registration Form</h1>
-				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">	
+				<h1 class="reg-form">Registration Form</h1>
+				<form method="post" id="simpleForm" action="<?php echo $_SERVER['PHP_SELF']; ?>">	
 
- medical<input type="radio" name="mype" required value="medical" onClick="Hide('div2', this); Reveal('didfv1', this)" /><br> 
+ medical<input type="radio" name="mype" required value="medical" onClick="Hide('div2', this); Hide('div3', this); Reveal('didfv1', this)" /><br> 
 
 
 
@@ -127,9 +134,9 @@ if (isset($_POST['seecheck'])) {
  supply<input type="radio" name="mype" required	value="ambulance" onClick="Hide('didfv1', this); Hide('div2', this);  Reveal('div3', this)" /> 
 
 <div class="row" id="didfv1" style="display: none">
-            <input type="checkbox" name="service[]" value="firstaid"><label>First Aid </label><br>
-           <input type="checkbox" name="service[]" value="ambulance"> <label>Ambulance</label><br>
-           <input type="checkbox" name="service[]" value="Paramedics"> <label>Paramedics</label><br>
+            <input type="checkbox" name="service[]" value="firstaid" ><label>First Aid </label><br>
+           <input type="checkbox" name="service[]" value="ambulance" > <label>Ambulance</label><br>
+           <input type="checkbox" name="service[]" value="Paramedics" > <label>Paramedics</label><br>
             <input type="checkbox" name="service[]" value="others"><label>others</label>
   </div>
 
@@ -152,16 +159,19 @@ if (isset($_POST['seecheck'])) {
 
   </div>
   <br>
-  <input type="submit" name="submit">
+  <input type="submit" name="submit"> <br>
 
-  </form>
+  <?php if (!empty($error_msg)): ?>
+            <span style="color: red;"><?php echo $error_msg; ?></span>
+        <?php endif; ?>
 
-
-  
-				</form>
+   </form>
+</form>
 			</aside>
 		</section>
 	</div>
+
+
 
 </body>
 </html>

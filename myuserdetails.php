@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>User Details</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 <body>
 
 <div class="container mt-3 pt-3" >
-<h1 class="text-center">medical request</h1>
+<h3 class="text-center">medical request</h3>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -38,14 +38,10 @@
     </tbody>
   </table>
 </div>
-<div class="row">
-  <div class="col-sm-4 offset-sm-4">
-<a href="admin.php"><div class="btn btn-primary">goback</div></a>
-</div>
-</div>
+
 
 <div class="container mt-3 pt-3" >
-<h1 class="text-center">legal request</h1>
+<h3 class="text-center">legal request</h3>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -70,15 +66,10 @@
     </tbody>
   </table>
 </div>
-<div class="row">
-  <div class="col-sm-4 offset-sm-4">
-<a href="admin.php"><div class="btn btn-primary">goback</div></a>
-</div>
-</div>
 
 
 <div class="container mt-3 pt-3" >
-<h1 class="text-center">supply request</h1>
+<h3 class="text-center">supply request</h3>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -103,17 +94,9 @@
     </tbody>
   </table>
 </div>
-<div class="row">
-  <div class="col-sm-4 offset-sm-4">
-<a href="admin.php"><div class="btn btn-primary">goback</div></a>
-</div>
-</div>
-
-
-
 
 <div class="container mt-3 pt-3" >
-<h1 class="text-center">state and local government of user</h1>
+<h3 class="text-center">state and local government of user</h3>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -142,12 +125,65 @@
     </tbody>
   </table>
 </div>
-<div class="row">
-  <div class="col-sm-4 offset-sm-4">
-<a href="admin.php"><div class="btn btn-primary">goback</div></a>
-</div>
+
+<div class="container mt-3 pt-3" >
+<h3 class="text-center">User contact Details</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>email</th>
+        <th>phone number</th>
+        <th>IP</th>
+        <th>city</th>
+        <th>region</th>
+        <th>country</th>
+        <th>postal</th>
+        <th>loc</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+
+    $connection_string="SELECT * FROM user_details";
+    $query=mysqli_query($link, $connection_string);
+    while($fetched_result = mysqli_fetch_array($query)){
+    
+        ?>
+        <tr>
+<td><?php echo $fetched_result["id"]?></td>
+       
+ <td><?php echo $fetched_result["email"]?></td>
+
+ <td><?php echo $fetched_result["phonenumber"]?></td>
+
+ <td><?php echo $fetched_result["ip"]?></td>
+
+ <td><?php echo $fetched_result["city"]?></td>
+
+ <td><?php echo $fetched_result["region"]?></td>
+
+ <td><?php echo $fetched_result["country"]?></td>
+
+ <td><?php echo $fetched_result["postal"]?></td>
+
+ <td><?php echo $fetched_result["loc"]?></td>
+
+
+      </tr>
+       <?php }?>
+    </tbody>
+  </table>
 </div>
 
+
+<div class="row">
+  <div class="col-sm-5 offset-sm-5">
+    <br>
+<a href="admin.php"><div class="btn btn-primary">Log Out</div></a>
+
+</div>
+</div>
 
 
 </body>

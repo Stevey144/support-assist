@@ -44,7 +44,7 @@ header('Location:success.php');
   <h4>Your details have been successfully entered, a representative will get back to you as soon as possible</h4>
   
   <div class="text-center">
-  <a href="register.php"><div class="btn btn-primary center">Go back</div></a>
+  <a href="index.php"><div class="btn btn-primary center">Go back</div></a>
   </div>
   </div>
   

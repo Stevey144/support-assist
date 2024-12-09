@@ -5,20 +5,35 @@ define("USERNAME", 'root');
 define('PASSWORD', '');
 define('DBNAME', 'admin_assistance');
 
+$url = "http://ipinfo.io/json"; // Replace 'json' with 'YOUR_TOKEN/json' for more detailed info if you have an API token.
+
+// Fetch data from the IPInfo API
+$response = file_get_contents($url);
+$details = json_decode($response);
+
+// Extract details
+$ip = $details->ip;          // User's IP address
+$city = $details->city;      // User's city
+$region = $details->region;  // User's state/region
+$country = $details->country; // User's country
+$postal = isset($details->postal) ? $details->postal : 'Not Available'; // Postal code
+$loc = $details->loc;        // Latitude and Longitude
+
+
 $link = mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME);
 
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$phonenumber = $_POST['phone'];
 
-	$sql = "insert into user_details (email,phonenumber) values ('$email','$phonenumber')";
+	$sql = "insert into user_details (email,phonenumber,ip,city,region,country,postal,loc) values ('$email','$phonenumber','$ip','$city','$region','$country','$postal','$loc')";
 
  $myquery = mysqli_query($link, $sql);
  if ($myquery) {
 header('Location:success.php');
  }
  else{
- 	echo "please fill out the fields they are required";
+ 	echo "Error processing request - possibly data connection error";
  }
 
 }

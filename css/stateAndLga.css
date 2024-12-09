@@ -1,0 +1,10 @@
+.container{
+	width: 960px;
+	min-height: 600px;
+	margin: auto;
+	font-family: cursive;
+	background-color: #fff;
+	background-image: url('../assests/countryside-people-working-field.jpg') !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+}

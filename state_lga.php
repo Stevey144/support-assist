@@ -5,6 +5,7 @@ define("USERNAME", 'root');
 define('PASSWORD', '');
 define('DBNAME', 'admin_assistance');
 
+
 $link = mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME);
 
 if (isset($_POST['submit'])) {
@@ -26,11 +27,6 @@ else{
     
   }
 
-
-
-
-
- 
 }
 
 
@@ -47,23 +43,45 @@ else{
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
     />
 
+    <link rel="stylesheet" type="text/css" href="css/stateAndLga.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+   
     <style>
       html,
       body {
         height: 100%;
       }
+      .container{
+      width: 960px;
+      min-height: 600px;
+      margin: auto;
+      font-family: cursive;
+      background-color: #fff;
+      background-image: url('../assests/children-rural-communities.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      }
+        .firstHeader{
+            background-color:black;
+            color:white;
+            border-radius:40px !important;
+        }
+
     </style>
   </head>
   <body>
     <div class="container h-100">
+   <a href="index.php"><button class="btn btn-primary mt-3 " name="submit"> <-- Go Back</button> </a> 
       <div class="row align-items-center h-100">
         <div class="col-md-4"></div>
         <div class="col-md-4">
           <center>
             <form  method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-              <h3>Please select your state and local government</h3>
+              <h3 class="firstHeader">Please select your state and local government</h3>
+              <br>
+
               <div class="form-group">
-                <label class="control-label">State of Origin</label>
+                <label class="control-label" style="color:white; background-color:black;">State of Residence</label>
                 <select
                   onchange="toggleLGA(this);"
                   name="state"
@@ -112,7 +130,7 @@ else{
               </div>
 
               <div class="form-group">
-                <label class="control-label">LGA of Origin</label>
+                <label class="control-label" style="color:white; background-color:black;">LGA of Residence</label>
                 <select
                   name="lga"
                   id="lga"

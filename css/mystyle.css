@@ -12,6 +12,9 @@ body{
 	margin: auto;
 	font-family: cursive;
 	background-color: #fff;
+	background-image: url('../assests/rural-communities.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .container header{
 	width: 100%;
@@ -85,3 +88,15 @@ body{
 	text-decoration: none;
 	font-size: 15px;
 }
+.intro-text{
+	font-style:italic; 
+	background-color:black; 
+	color:white; width:300px;
+}
+
+.reg-form{
+	background-color: black !important;
+	color: white !important;
+	width: 200px !important;
+}
+
