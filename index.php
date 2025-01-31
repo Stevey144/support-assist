@@ -1,10 +1,7 @@
 <?php 
 //require_once 'includes/functions.inc.php';
 
-define("HOST", 'localhost');
-define("USERNAME", 'root');
-define('PASSWORD', '');
-define('DBNAME', 'admin_assistance');
+include("includes/db-config.php");
 
 $link = mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME);
 $error_msg = "";
@@ -89,6 +86,38 @@ if (isset($_POST['seecheck'])) {
 	<title>Request Page</title>
 	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">	
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<style>
+		*{
+			font-family:Roboto !important;
+		}
+
+@media only screen and (min-width:370px) and (max-width:602px){
+   
+   .container{
+	   width: 100% !important;
+	   background-color: #eee !important;
+   }
+}
+
+@media only screen and (min-width:350px) and (max-width:800px){
+   *{
+	   box-sizing: border-box; /* Standard */
+	   -webkit-box-sizing: border-box; /* Safari and older Chrome */
+	   -moz-box-sizing: border-box; /* Firefox */
+	   -ms-box-sizing: border-box; /* Older versions of Internet Explorer and Edge */
+   }
+
+ 
+
+ .container{
+   width: 100% !important;
+   min-height: 700px;
+   background-color:#eee;
+ }
+
+}
+	</style>
 
 <script type="text/javascript">
   function Reveal(it, box) {
@@ -105,7 +134,7 @@ if (isset($_POST['seecheck'])) {
 <body>
 	<div class="container">
 		<header>
-			<h1>Support Assistance </h1>
+			<h1>Village Voice </h1>
 		</header>
 
 <nav>
@@ -115,23 +144,36 @@ if (isset($_POST['seecheck'])) {
 		<section>
 			<article>
 				<div class="support-pic">
-			<h1 class="intro-text">Welcome to support Assistance</h1>
+			<h1 class="intro-text">Welcome to Village Voice</h1>
 			<h1 class="intro-text">connecting you to vital support..</h1>
 			</div>
 
 			</article>
 			<aside>
 				<h1 class="reg-form">Registration Form</h1>
-				<form method="post" id="simpleForm" action="<?php echo $_SERVER['PHP_SELF']; ?>">	
+				<form method="post" id="simpleForm" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+				
+				
+				<table>
+					<tr>
+						<td>medical</td>
+						<td>
+						<input type="radio"  name="mype" required value="medical" onClick="Hide('div2', this); Hide('div3', this); Reveal('didfv1', this)" /><br> 
+						</td>
+				</tr>
+				<tr>
+						<td>legals</td>
+						<td>
+						<input type="radio" name="mype" required value="legal" onClick=" Hide('didfv1', this);Reveal('div2',this); Hide('div3', this)" /><br>               
+						</td>
+				</tr>	<tr>
+						<td>supply</td>
+						<td>
+ <input type="radio" name="mype" required	value="ambulance" onClick="Hide('didfv1', this); Hide('div2', this);  Reveal('div3', this)" /> 
 
- medical<input type="radio" name="mype" required value="medical" onClick="Hide('div2', this); Hide('div3', this); Reveal('didfv1', this)" /><br> 
-
-
-
- legals<input type="radio" name="mype" required value="legal" onClick=" Hide('didfv1', this);Reveal('div2',this); Hide('div3', this)" /><br>               
-
-
- supply<input type="radio" name="mype" required	value="ambulance" onClick="Hide('didfv1', this); Hide('div2', this);  Reveal('div3', this)" /> 
+						</td>
+				</tr>
+				</table>
 
 <div class="row" id="didfv1" style="display: none">
             <input type="checkbox" name="service[]" value="firstaid" ><label>First Aid </label><br>

@@ -4,11 +4,25 @@
 	<title>Login Form</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<style>
+		*{
+			font-family:Roboto !important;
+			font-size:14px !important;
+		}
+		.home-link{
+			color:white !important;
+		}
+
+
+
+		</style>
+
 </head>
 <body>
 	<div class="container">
 		<header>
-			<h1>Welcome to support assistance Admin Page </h1>
+			<h1>Welcome to Village Voice Admin Page </h1>
 		</header>
 		<section>
 			<article>
@@ -29,10 +43,8 @@
 </body>
 </html>
 <?php
-define("HOST", 'localhost');
-define("USERNAME", 'root');
-define('PASSWORD', '');
-define('DBNAME', 'admin_assistance');
+session_start();
+include("includes/db-config.php");
 
 $link = mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME); 
 
@@ -41,9 +53,21 @@ if(isset($_POST['submit'])) {
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-if (($username=="Admin-support") && ($password=="123")){
+if (($username=="staff-Admin") && ($password=="12372")){
+$_SESSION['admin_logged_in'] = true;
   header('Location:myuserdetails.php');
+  exit();
 }
+else{
+
+$message = "Invalid Credentials entered, please verify details!"; // Your alert message
+
+echo "<script type='text/javascript'>
+    alert('$message');
+</script>";
+exit; // Stop further script execution
+}
+
 }
 
  ?>

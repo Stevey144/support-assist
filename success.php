@@ -1,9 +1,6 @@
 <?php 
 
-define("HOST", 'localhost');
-define("USERNAME", 'root');
-define('PASSWORD', '');
-define('DBNAME', 'admin_assistance');
+include("includes/db-config.php");
 
 $link = mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME);
 
@@ -28,7 +25,7 @@ header('Location:success.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Village Voice</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

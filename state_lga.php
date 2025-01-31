@@ -1,9 +1,6 @@
 <?php
 
-define("HOST", 'localhost');
-define("USERNAME", 'root');
-define('PASSWORD', '');
-define('DBNAME', 'admin_assistance');
+include("includes/db-config.php");
 
 
 $link = mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME);
@@ -45,12 +42,39 @@ else{
 
     <link rel="stylesheet" type="text/css" href="css/stateAndLga.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
    
     <style>
-      html,
-      body {
-        height: 100%;
-      }
+
+*{
+			font-family:Roboto !important;
+		}
+
+    @media only screen and (min-width:370px) and (max-width:602px){
+   
+   .container{
+	   width: 100% !important;
+	   background-color: #eee !important;
+   }
+
+}
+
+@media only screen and (min-width:350px) and (max-width:800px){
+   *{
+	   box-sizing: border-box; /* Standard */
+	   -webkit-box-sizing: border-box; /* Safari and older Chrome */
+	   -moz-box-sizing: border-box; /* Firefox */
+	   -ms-box-sizing: border-box; /* Older versions of Internet Explorer and Edge */
+   }
+
+ .container{
+   width: 100% !important;
+   min-height: 700px;
+   background-color:#eee;
+ }
+
+}
+  
       .container{
       width: 960px;
       min-height: 600px;
@@ -76,7 +100,7 @@ else{
         <div class="col-md-4"></div>
         <div class="col-md-4">
           <center>
-            <form  method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+            <form  method="post" id="myform" action="<?php echo $_SERVER['PHP_SELF'];?>">
               <h3 class="firstHeader">Please select your state and local government</h3>
               <br>
 
@@ -139,7 +163,7 @@ else{
                 >
                 </select>
                 
-                <button type="submit" class="btn btn-primary mt-3 " name="submit">Submit</button>  
+                <button type="submit" class="btn btn-primary mt-3 " id="mybutton" name="submit">Submit</button>  
                 
               </div>
             </form>
@@ -151,7 +175,21 @@ else{
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="js/lga.min.js"></script>
+
+    <script>
+       $("#mybutton").click(function (e) {
+       //  var LGA =  $('#lga').val();
+      if ($("#lga").val() == "Select LGA...") {
+        alert("please select the local government of residence where this aid is needed!");
+        return false;
+      } else {
+        return true;
+      }
+    });
+    </script>
+    
   </body>
 </html>
 

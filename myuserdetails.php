@@ -1,3 +1,15 @@
+<?php
+session_start(); // Start the session
+
+// Check if admin is logged in, otherwise redirect to admin.php
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header("Location: admin.php"); // Redirect to login page
+    exit();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +34,6 @@
     </thead>
     <tbody>
     <?php
-
     include("includes/db-config.php");
     $query="SELECT * FROM medical";
     $run=mysqli_query($link, $query);
@@ -180,7 +191,7 @@
 <div class="row">
   <div class="col-sm-5 offset-sm-5">
     <br>
-<a href="admin.php"><div class="btn btn-primary">Log Out</div></a>
+<a href="logout.php"><div class="btn btn-primary">Log Out</div></a>
 
 </div>
 </div>
